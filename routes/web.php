@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::resource('article',ArticalController::class);
+//Route::get('artical',[App\Http\Controllers\ArticalController::class,'show'])->name('article.show');
+
+Route::group(['middleware' => ['auth','isAdmin'], 'prefix'=>'admin'], function (){
+    Route::view('/','admin_dashboard');
+});
+
