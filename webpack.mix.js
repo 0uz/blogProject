@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+mix.disableSuccessNotifications();
+mix.disableNotifications();
 
 /*
  |--------------------------------------------------------------------------

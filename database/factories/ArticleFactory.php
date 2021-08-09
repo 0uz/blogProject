@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\artical;
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ArticalFactory extends Factory
+class ArticleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = artical::class;
+    protected $model = Article::class;
 
     /**
      * Define the model's default state.

@@ -28,7 +28,7 @@
                         @if(auth()->user()->permission=='admin')
                             <a href="{{ url('admin') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @else
-                            <a href="{{ url('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                            <a href="{{ route('article.index') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @endif
 
                     @else

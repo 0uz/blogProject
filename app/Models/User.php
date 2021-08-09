@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Article;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,11 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +34,8 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+
 
     /**
      * The attributes that should be hidden for arrays.

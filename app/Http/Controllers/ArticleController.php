@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\artical;
+use App\Http\Requests\ArticleCreateRequest;
+use App\Models\Article;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ArticalController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,8 @@ class ArticalController extends Controller
      */
     public function index()
     {
-        return "Index";
+        $articles = Article::get();
+        return view('dashboard',compact('articles'));
     }
 
     /**
@@ -33,29 +37,32 @@ class ArticalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleCreateRequest $request)
     {
-        return "add article";
+        $article = new Article($request->post());
+        $article->owner = Auth::user()->id;
+        Article::create($article->toArray());
+        return redirect()->route('article.index')->with('success','Article created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\artical  $artical
+     * @param  \App\Models\Article  $artical
      * @return \Illuminate\Http\Response
      */
-    public function show(artical $artical)
+    public function show(Article $article)
     {
-        return "show article";
+        return "show";
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\artical  $artical
+     * @param  \App\Models\Article  $artical
      * @return \Illuminate\Http\Response
      */
-    public function edit(artical $artical)
+    public function edit(Article $artical)
     {
         //
     }
@@ -64,10 +71,10 @@ class ArticalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\artical  $artical
+     * @param  \App\Models\Article  $artical
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, artical $artical)
+    public function update(Request $request, Article $artical)
     {
         //
     }
@@ -75,10 +82,10 @@ class ArticalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\artical  $artical
+     * @param  \App\Models\Article  $artical
      * @return \Illuminate\Http\Response
      */
-    public function destroy(artical $artical)
+    public function destroy(Article $artical)
     {
         //
     }
