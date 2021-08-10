@@ -1088,12 +1088,13 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
-.m-2 {
-	margin: 0.5rem;
-}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
+}
+.my-1 {
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
 }
 .mx-2 {
 	margin-left: 0.5rem;
@@ -1167,6 +1168,9 @@ select {
 }
 .mb-4 {
 	margin-bottom: 1rem;
+}
+.mr-1 {
+	margin-right: 0.25rem;
 }
 .mb-8 {
 	margin-bottom: 2rem;
@@ -1345,13 +1349,6 @@ select {
 .list-disc {
 	list-style-type: disc;
 }
-.auto-cols-max {
-	grid-auto-columns: -webkit-max-content;
-	grid-auto-columns: max-content;
-}
-.grid-flow-col {
-	grid-auto-flow: column;
-}
 .grid-cols-6 {
 	grid-template-columns: repeat(6, minmax(0, 1fr));
 }
@@ -1388,9 +1385,6 @@ select {
 .gap-1 {
 	gap: 0.25rem;
 }
-.gap-2 {
-	gap: 0.5rem;
-}
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -1405,9 +1399,6 @@ select {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-.place-self-center {
-	place-self: center;
 }
 .overflow-hidden {
 	overflow: hidden;

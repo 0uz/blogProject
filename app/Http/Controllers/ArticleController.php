@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleCreateRequest;
 use App\Models\Article;
+use App\Models\Tag;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\Util\Json;
 
 class ArticleController extends Controller
 {
@@ -41,7 +43,11 @@ class ArticleController extends Controller
     {
         $article = new Article($request->post());
         $article->owner = Auth::user()->id;
-        Article::create($article->toArray());
+        $returned = Article::create($article->toArray());
+//        dd($returned);
+//        foreach (json_decode($request->post('tags')) as $tag){
+//            Tag::create(['tag'=>$tag,'ownerArticle'=>])
+//        }
         return redirect()->route('article.index')->with('success','Article created successfully');
     }
 
